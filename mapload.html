@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- lan是语言，dir是文字排列方式 默认ltr（从左到右） -->
+<html dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 表头属性后面详细了解一下 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图练习成果</title>
+    <link rel="shortcut icon" href="image/maplogo.ico" type="image/x-icon">
+    <!-- 后面自己部署一下webgis的环境 -->
+    <!-- <link href="http://192.168.10.172/arcgis_js_api/library/3.22/3.22/esri/css/esri.css" rel="stylesheet" type="text/css" />
+    <script src="http://192.168.10.172/arcgis_js_api/library/3.22/3.22/init.js"></script> -->
+
+    <link href="http://47.106.79.107/arcgis_js_api/library/3.22/3.22/esri/css/esri.css" rel="stylesheet" type="text/css" />
+    <script src="http://47.106.79.107/arcgis_js_api/library/3.22/3.22/init.js"></script>
+
+    <link href="layui/css/layui.css" rel="stylesheet">
+    <script src="layui/layui.js"></script>
+    <!-- 学习jQuary如何部署到本地 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <!-- 项目的相关配置文件 -->
+    <link rel="stylesheet" href="mapload.css">
+
+    <!-- 路径的问题还是没搞懂 -->
+</head>
+
+<body>
+    <div id="mainWindowdiv">
+        <div id="mapdiv"> </div>
+        <!-- 检索栏 -->
+
+        <!-- 右下角属性结果栏 -->
+        <div id="results" style="display: none">
+            <h3 id="head">属性信息</h3>
+            点击地图，查看点击项目的项目信息<br><br>
+            <div id="infonum"></div>
+            <div id="display"></div>
+        </div>
+        <!-- 查询结果 -->
+        <div id="searchresults" style="display: none">
+            <div id="list" style="display: none"></div>
+            <div id="laypage" style="display: none"></div>
+        </div>
+        <!-- 底部切换单元 -->
+        <div id="bottombar">
+            <div id="switchBtnContainer">
+                <div id="picContainer1" onmouseover="javascript:picBtnShow();" onmouseout="javascript:picBtnHide();"></div>
+                <div id="picContainer2" style="display: none"></div>
+                <div id="picContainer3" style="display: none"></div>
+            </div>
+        </div>
+
+        <div class="topbar">
+            <div class="container">
+                <div id="search">
+                    <div id="inputContainer">
+                        <input type="text" id="searchVal" placeholder="请输入要检索的内容">
+                        <div id="searchDel" data-title="清空" onclick="javascript:ClearAll()"></div>
+                    </div>
+                    <button id="searchBtn" id="searchBtn"></button>
+                </div>
+                <div class="topbar-hav">
+                    <button id="baseMapbtn">地图数据</button><span>|</span>
+                    <button id="imageMapbtn">影像数据</button><span>|</span>
+                    <button id="shpMapbtn">矢量数据</button><span>|</span>
+                    <button id="formalBufferBtn">缓冲</button><span>|</span>
+                </div>
+                <div class="topbar-cart">
+                    <button id="drawGraphicbtn"><i class="iconfont">&#xe601;</i> 绘制范围</button>
+                    <button id="clickGraphicbtn"><i class="iconfont">&#xe601;</i> 点击查询</button>
+                </div>
+                <div class="bottom-cart">
+                    <button id="bufferGraphicbtn"><i class="iconfont">&#xe601;</i> 缓冲查询</button>
+                    <button type="button" class="tool" id="line">Line</button>
+                    <input type="text" id="bufferVal" placeholder="请输入缓冲距离(km)">
+                    <input type="text" id="bufferUnit" value="KM" disabled>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="toolbar">
+            <div id="inputContainer">
+                    <input type="text" id="distance" placeholder="请输入要缓冲查询的距离">
+                    <div id="clearGraphics" data-title="清空"></div>
+                </div>
+        </div> -->
+    </div>
+    <script src="mapURL.js"></script>
+    <script src="mapload.js"></script>
+    <script src="commontools.js"></script>
+    <script src="Geometry.js"></script>
+    <script src="search.js"></script>
+    <script src="query.js"></script>
+    <script src="buffer.js"></script>
+    <script src="formalbuffer.js"></script>
+</body>
+
+</html>
